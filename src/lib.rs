@@ -54,7 +54,7 @@ impl FileManipulator {
         let mut new_content = String::new();
         for (i, part) in splitted.iter().enumerate() {
             if i == 1 {
-                let content = format!("{}{}{}{}", between, content, "\n", between);
+                let content = format!("{}{}{}{}{}", between, "\n", content, "\n", between);
                 new_content.push_str(&content);
             } else {
                 new_content.push_str(&part);
@@ -83,8 +83,16 @@ impl FileManipulator {
         for (i, part) in splitted.iter().enumerate() {
             if i == 1 {
                 let content = format!(
-                    "{}{}{}{}{}{}{}",
-                    after, "\n", &between_pattern, content, "\n", &between_pattern, part
+                    "{}{}{}{}{}{}{}{}{}",
+                    after,
+                    "\n",
+                    &between_pattern,
+                    "\n",
+                    content,
+                    "\n",
+                    &between_pattern,
+                    "\n",
+                    part
                 );
                 new_content.push_str(&content);
             } else {
